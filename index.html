@@ -240,7 +240,7 @@ $('spin').addEventListener('click',()=>{ctl.autoRotate=!ctl.autoRotate;$('spin')
 $('reset').addEventListener('click',()=>{cam.position.copy(home);ctl.target.set(0,0,0)});
 $('top').addEventListener('click',()=>{cam.position.set(0,120*Math.max(1,1.6/Math.max(cam.aspect,.45)),1);ctl.target.set(0,0,0);ctl.autoRotate=false;$('spin').innerHTML='⟳<span class="t"> Auto-rotate: Off</span>'});
 function resize(){R.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;
- const k=cam.aspect<1.3?Math.min(2.4,1.45/Math.max(cam.aspect,.4)):1;cam.fov=cam.aspect<1?55:45;
+ const k=cam.aspect<1.3?Math.min(1.1,1.45/Math.max(cam.aspect,.95)):1;cam.fov=cam.aspect<1?66:45;
  const prev=home.clone();home.copy(homeBase).multiplyScalar(k);if(cam.position.distanceTo(prev)<1)cam.position.copy(home);
  ctl.maxDistance=220*Math.max(1,k);cam.updateProjectionMatrix()}
 $('lgbtn').addEventListener('click',()=>$('legend').classList.toggle('open'));addEventListener('resize',resize);addEventListener('orientationchange',()=>setTimeout(()=>{resize();cam.position.copy(home);ctl.target.set(0,0,0)},250));resize();
